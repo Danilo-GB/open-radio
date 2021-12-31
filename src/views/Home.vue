@@ -1,5 +1,5 @@
 <template>
-  <div class="home">HOME</div>
+  <div>HI RADIO</div>
 </template>
 
 <script>
