@@ -1,8 +1,8 @@
 <template>
   <r-loader v-if="isLoading" />
   <main class="flex flex-col-reverse h-screen md:flex-row">
-    <r-navigation class="bg-gray-600 h-1/6 md:w-1/6 md:h-screen" />
-    <router-view class="bg-gray-500 h-5/6 md:w-5/6 md:h-screen" />
+    <r-navigation class="h-1/6 md:w-1/6 md:h-screen" />
+    <router-view class="h-5/6 md:w-5/6 md:h-screen" />
   </main>
 </template>
 
