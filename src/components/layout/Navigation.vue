@@ -53,7 +53,7 @@
       </router-link>
     </div>
     <!-- SEARCH PAGE----->
-    <!-- CURRENT SONG CONTROL FOR MOBILE-->
+    <!-- SONG CONTROL FOR MOBILE-->
     <div class="w-1/5 md:w-full md:hidden">
       <a @click="CurrentSongControl">
         <div class="logo-container">
@@ -98,7 +98,7 @@
         </div>
       </a>
     </div>
-    <!-- CURRENT SONG CONTROL FOR MOBILE-->
+    <!-- SONG CONTROL FOR MOBILE-->
     <!-- FAVORITES PAGE-->
     <div class="w-1/5 md:w-full">
       <router-link to="favorites">
@@ -139,6 +139,8 @@
       </router-link>
     </div>
     <!-- INFO PAGE------->
+    <!-- SONG CONTROL FOR DESKTOP-->
+    <!-- SONG CONTROL FOR DESKTOP-->
   </nav>
 </template>
 <script>
@@ -151,22 +153,25 @@ export default {
 };
 </script>
 <style scoped>
+.nav-bar {
+  background: #252525;
+  overflow: hidden;
+}
 .brand-logo {
   fill: none;
   stroke-width: 3;
   stroke: #10b8c9;
   stroke-opacity: 0.8;
 }
-svg {
+.logo-container svg {
   fill: none;
   stroke: rgba(255, 255, 255, 0.3);
-}
-.nav-bar {
-  background: #252525;
+  transition: 0.2s;
 }
 a:hover svg,
 a.router-link-exact-active svg {
   stroke: #10b8c9;
+  transform: scale(1.2);
 }
 @media (min-width: 768px) {
   .logo-container {
