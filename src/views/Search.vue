@@ -4,8 +4,12 @@
       <input
         type="text"
         placeholder="♪♪ Type the station name ♪♪"
+        v-model="query"
         class="w-3/4 md:w-1/2 h-12 bg-gray-500 bg-opacity-50 text-white placeholder-white px-6 focus:outline-none border-2 hover:border-purple-500 focus:border-purple-500 transition duration-200"
       />
+      <h1>
+        {{ query }}
+      </h1>
     </div>
     <div class="flex flex-cols flex-wrap w-full" v-if="dataLoaded">
       <div class="flex flex-row w-1/3 md:w-1/4">
