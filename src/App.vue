@@ -1,7 +1,9 @@
 <template>
   <r-loader v-if="isLoading" />
-  <main class="flex flex-col-reverse h-screen overflow-hidden md:flex-row">
-    <r-navigation class="h-1/6 md:w-1/6 md:h-screen md:fixed md:bottom-0" />
+  <main class="flex flex-col-reverse h-screen md:flex-row">
+    <r-navigation
+      class="h-1/6 w-full rounded-t-xl md:w-1/6 md:h-screen fixed bottom-0 md:relative"
+    />
     <router-view class="h-5/6 md:w-5/6 md:h-screen content" />
   </main>
 </template>

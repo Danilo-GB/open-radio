@@ -16,7 +16,7 @@
       <router-link to="/">
         <div class="logo-container">
           <svg
-            class="w-full h-10"
+            class="w-full h-8 md:h-10"
             fill="none"
             stroke="rgba(255, 255, 255, 0.3)"
             viewBox="0 0 24 24"
@@ -38,7 +38,7 @@
       <router-link to="/search">
         <div class="logo-container">
           <svg
-            class="w-full h-10"
+            class="w-full h-8 md:h-10"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -78,7 +78,7 @@
           </svg>
           <svg
             v-else
-            class="w-full h-10"
+            class="w-full h-8 md:h-10"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -104,7 +104,7 @@
       <router-link to="favorites">
         <div class="logo-container">
           <svg
-            class="w-full h-10"
+            class="w-full h-8 md:h-10"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -124,7 +124,7 @@
       <router-link to="info">
         <div class="logo-container">
           <svg
-            class="w-full h-10"
+            class="w-full h-8 md:h-10"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
