@@ -11,7 +11,7 @@ function getStations(q) {
   return fetch(
     `${url}/search?name=${q
       .trim()
-      .replace(" ", "%20")}&reverse=false&offset=0&limit=1&hidebroken=true`,
+      .replace(" ", "%20")}&reverse=false&offset=0&limit=50&hidebroken=true`,
     config
   ).then((response) => response.json());
 }

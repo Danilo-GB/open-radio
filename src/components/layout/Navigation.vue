@@ -158,10 +158,10 @@ export default {
   overflow: hidden;
 }
 .brand-logo {
-  fill: none;
-  stroke-width: 3;
-  stroke: #10b8c9;
-  stroke-opacity: 0.8;
+  fill: #10b8c9;
+  stroke-width: 0;
+  stroke: #00f6e2;
+  stroke-opacity: 1;
 }
 .logo-container svg {
   fill: none;
@@ -175,7 +175,7 @@ a.router-link-exact-active svg {
 }
 @media (min-width: 768px) {
   .logo-container {
-    padding: 1rem 0;
+    padding: 2rem 0;
     margin: 1rem 0;
   }
   a.router-link-exact-active .logo-container {
