@@ -1,10 +1,24 @@
 <template>
-  <div>
-    <station />
-    <station-criteria />
-    <button class="border-2 text-white" @click="getStations">
-      get stations
-    </button>
+  <div class="h-full overflow-y-scroll search">
+    <div class="flex items-center justify-center h-1/2">
+      <input
+        type="text"
+        placeholder="♪♪ Type the station name ♪♪"
+        class="w-3/4 md:w-1/2 h-12 bg-gray-500 bg-opacity-50 text-white placeholder-white px-6 focus:outline-none border-2 hover:border-purple-500 focus:border-purple-500 transition duration-200"
+      />
+    </div>
+    <div class="flex flex-cols flex-wrap w-full" v-if="dataLoaded">
+      <div class="flex flex-row w-1/3 md:w-1/4">
+        <station-criteria criteria="TOP TEN" />
+      </div>
+      <div class="flex flex-row flex-wrap w-2/3 md:w-3/4">
+        <station />
+        <station />
+        <station />
+        <station />
+        <station />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -12,7 +26,6 @@
 import RadioBrowser from "@/services/RadioBrowser.js";
 import Station from "@/components/Station.vue";
 import StationCriteria from "@/components/StationCriteria.vue";
-import StationCriteria from "../components/StationCriteria.vue";
 export default {
   name: "Search",
   components: {
@@ -21,21 +34,24 @@ export default {
   },
   data() {
     return {
-      query: "los 40 c",
-      res: {},
+      dataLoaded: true,
+      query: "",
+      stations: {},
     };
   },
   methods: {
     getStations() {
       RadioBrowser.getStations(this.query).then(
-        (stations) => (this.res = stations)
+        (stations) => (this.stations = stations)
       );
     },
-  },
-  mounted() {
-    this.getStations;
   },
 };
 </script>
 
-<style></style>
+<style>
+.search {
+  background-image: url("../assets/global-background.jpg");
+  background-size: cover;
+}
+</style>
