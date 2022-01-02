@@ -31,11 +31,11 @@
     </div>
     <!-- SEARCH BAR -->
     <!-- SEARCH RESULTS -->
-    <div class="flex flex-cols flex-wrap w-full" v-if="stations.length > 0">
-      <div class="flex flex-row w-1/3 md:w-1/4">
+    <div class="flex flex-col w-full" v-if="stations.length > 0">
+      <div class="flex flex-row w-1/2 md:w-1/3">
         <station-criteria :criteria="searchedStation" />
       </div>
-      <div class="flex flex-row flex-wrap w-2/3 md:w-3/4">
+      <div class="flex flex-row flex-wrap w-full">
         <station
           v-for="station in stations"
           :key="station.stationuuid"
@@ -61,12 +61,14 @@ export default {
     return {
       dataLoaded: true,
       query: "",
+      searchedStation: "",
       stations: [],
     };
   },
   methods: {
     getStations() {
-      RadioBrowser.getStations(this.query).then(
+      this.searchedStation = this.query;
+      RadioBrowser.getStations(this.searchedStation).then(
         (stations) => (this.stations = stations)
       );
       this.query = "";

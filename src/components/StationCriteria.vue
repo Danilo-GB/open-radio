@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-gray-700 w-full h-32 md:h-52 text-white">{{ criteria }}</div>
+  <div class="criteria w-full h-32 md:h-52 text-white p-10 text-md md:text-xl">
+    {{ criteria }}
+  </div>
 </template>
 
 <script>
@@ -10,4 +12,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.criteria {
+  background: #252525;
+}
+</style>
