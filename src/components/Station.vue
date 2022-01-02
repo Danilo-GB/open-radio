@@ -93,11 +93,7 @@
 </template>
 
 <script>
-import useEmitter from "@/services/eventBus";
 export default {
-  setup() {
-    const emitter = useEmitter();
-  },
   props: {
     station: {
       type: Object,
@@ -105,9 +101,7 @@ export default {
     },
   },
   methods: {
-    changeStation() {
-      emiter.emit("change-station", this.station.name);
-    },
+    changeStation() {},
   },
 };
 </script>

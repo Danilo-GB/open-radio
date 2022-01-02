@@ -136,27 +136,18 @@
   </nav>
 </template>
 <script>
-import useEmitter from "@/services/eventBus";
 export default {
-  setup() {
-    const emitter = useEmitter();
-  },
   data() {
     return {
       isPlaying: false,
     };
   },
   methods: {
-    newStation(event) {
+    newStation() {
       console.log("event:");
-      console.log(event);
+      console.log();
     },
     switchStationSate() {},
-  },
-  mounted() {
-    emitter.on("change-station", (stationId) => {
-      console.log(stationId);
-    });
   },
 };
 </script>
