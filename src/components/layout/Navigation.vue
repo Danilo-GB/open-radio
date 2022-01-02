@@ -10,7 +10,6 @@
         />
       </svg>
     </div>
-    <!-- BRAND LOGO -->
     <!-- HOME PAGE --->
     <div class="w-1/5 md:w-full">
       <router-link to="/">
@@ -32,7 +31,6 @@
         </div>
       </router-link>
     </div>
-    <!-- HOME PAGE --->
     <!-- SEARCH PAGE-->
     <div class="w-1/5 md:w-full">
       <router-link to="/search">
@@ -52,10 +50,9 @@
         </div>
       </router-link>
     </div>
-    <!-- SEARCH PAGE----->
-    <!-- SONG CONTROL FOR MOBILE-->
-    <div class="w-1/5 md:w-full md:hidden">
-      <a @click="CurrentSongControl">
+    <!-- SONG CONTROL-->
+    <div class="w-1/5 md:w-full cursor-pointer">
+      <a>
         <div class="logo-container">
           <svg
             v-if="isPlaying"
@@ -98,7 +95,6 @@
         </div>
       </a>
     </div>
-    <!-- SONG CONTROL FOR MOBILE-->
     <!-- FAVORITES PAGE-->
     <div class="w-1/5 md:w-full">
       <router-link to="favorites">
@@ -118,7 +114,6 @@
         </div>
       </router-link>
     </div>
-    <!-- FAVORITES PAGE-->
     <!-- INFO PAGE------->
     <div class="w-1/5 md:w-full">
       <router-link to="info">
@@ -138,20 +133,34 @@
         </div>
       </router-link>
     </div>
-    <!-- INFO PAGE------->
-    <!-- SONG CONTROL FOR DESKTOP-->
-    <!-- SONG CONTROL FOR DESKTOP-->
   </nav>
 </template>
 <script>
+import useEmitter from "@/services/eventBus";
 export default {
+  setup() {
+    const emitter = useEmitter();
+  },
   data() {
     return {
       isPlaying: false,
     };
   },
+  methods: {
+    newStation(event) {
+      console.log("event:");
+      console.log(event);
+    },
+    switchStationSate() {},
+  },
+  mounted() {
+    emitter.on("change-station", (stationId) => {
+      console.log(stationId);
+    });
+  },
 };
 </script>
+
 <style scoped>
 .nav-bar {
   background: #252525;

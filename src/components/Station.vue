@@ -1,7 +1,7 @@
 <template>
   <div
     class="station w-1/2 h-52 md:h-52 md:w-1/3 text-white p-3"
-    v-if="station.favicon"
+    v-if="station.favicon && station.country"
   >
     <div class="h-1/5 flex flex-row justify-evenly mb-2">
       <!-- COUNTRY BADGE -->
@@ -77,8 +77,13 @@
       </div>
     </div>
     <!-- STATION IMAGE -->
-    <img :src="station.favicon" :alt="station.name" class="h-3/5 mx-auto" />
-    <div class="h-1/5 pt-1 block text-center overflow-hidden">
+    <img
+      :src="station.favicon"
+      alt="Oops, image not found."
+      class="h-3/5 mx-auto text-center cursor-pointer"
+      @click="changeStation"
+    />
+    <div class="h-1/5 pt-1 block text-center overflow-ellipsis">
       <!-- STATION NAME -->
       <div>
         {{ station.name }}
@@ -88,11 +93,20 @@
 </template>
 
 <script>
+import useEmitter from "@/services/eventBus";
 export default {
+  setup() {
+    const emitter = useEmitter();
+  },
   props: {
     station: {
       type: Object,
       default: {},
+    },
+  },
+  methods: {
+    changeStation() {
+      emiter.emit("change-station", this.station.name);
     },
   },
 };
