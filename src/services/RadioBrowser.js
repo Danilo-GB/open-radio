@@ -22,7 +22,6 @@ function getTopFive() {
     "&languageExact=true&order=votes&reverse=true&offset=0&limit=6&hidebroken=true";
   return Promise.all([
     fetch(`${url}/search?language=english${params}`, config),
-    fetch(`${url}/search?language=chinese${params}`, config),
     fetch(`${url}/search?language=spanish${params}`, config),
     fetch(`${url}/search?language=french${params}`, config),
     fetch(`${url}/search?language=russian${params}`, config),
