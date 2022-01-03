@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-y-scroll search">
+  <div>
     <!-- SEARCH BAR -->
     <div class="flex items-center justify-center h-1/2">
       <input
@@ -11,10 +11,10 @@
       />
       <button
         @click="getStations"
-        class="h-12 bg-blue-400 bg-opacity-70 w-12 border-white border-2 transition"
+        class="h-12 bg-blue-400 bg-opacity-70 w-12 hover:bg-purple-500 transition duration-200"
       >
         <svg
-          class="w-6 h-6 mx-auto search-icon duration-200"
+          class="w-6 h-6 mx-auto"
           fill="none"
           stroke="#fff"
           viewBox="0 0 24 24"
@@ -30,21 +30,19 @@
       </button>
     </div>
     <!-- SEARCH RESULTS -->
-    <div class="flex flex-col w-full" v-if="searchedStation">
+    <div class="flex flex-col w-full" v-if="searchedQuery">
       <div>
-        <!-- 
-        class="flex flex-row w-1/2 md:w-1/3" -->
-        <station-criteria :criteria="{ searchedStation, ResultSize }" />
+        <station-criteria
+          :criteria="{ searchedQuery, ResultSize, mode: 'search' }"
+        />
       </div>
-      <transition name="fade">
-        <div class="flex flex-row flex-wrap w-full">
-          <station
-            v-for="station in stations"
-            :key="station.stationuuid"
-            :station="station"
-          />
-        </div>
-      </transition>
+      <div class="flex flex-row flex-wrap w-full">
+        <station
+          v-for="station in stations"
+          :key="station.stationuuid"
+          :station="station"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -63,16 +61,18 @@ export default {
     return {
       dataLoaded: true,
       query: "",
-      searchedStation: "",
+      searchedQuery: "",
       stations: [],
     };
   },
   methods: {
     getStations() {
-      this.searchedStation = this.query;
-      RadioBrowser.getStations(this.searchedStation).then(
-        (stations) => (this.stations = stations)
-      );
+      this.searchedQuery = this.query.trim();
+      if (this.searchedQuery) {
+        RadioBrowser.getStations(this.searchedQuery).then(
+          (stations) => (this.stations = stations)
+        );
+      }
       this.query = "";
     },
   },
@@ -85,12 +85,4 @@ export default {
 };
 </script>
 
-<style>
-.search {
-  background-image: url("../assets/global-background.jpg");
-  background-size: cover;
-}
-.search-icon:hover {
-  stroke: rgba(139, 92, 246);
-}
-</style>
+<style></style>

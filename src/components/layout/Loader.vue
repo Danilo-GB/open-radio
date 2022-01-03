@@ -24,7 +24,8 @@
 .loader-container {
   position: fixed;
   top: 0;
-  width: 100%;
+  right: 0;
+  width: 83.333%;
   height: 100%;
   background-color: #fdf8f5;
 }
