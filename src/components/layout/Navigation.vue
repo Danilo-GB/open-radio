@@ -165,6 +165,7 @@ export default {
       this.playingStation = "";
     },
   },
+
   mounted() {
     bus.listen("changeStation", (data) => this.newStation(data));
   },

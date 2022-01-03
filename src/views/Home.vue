@@ -3,7 +3,7 @@
     <div v-for="(list, index) in topsList" :key="index">
       <station-criteria
         :criteria="{
-          searchedQuery: list[0].language,
+          searchedQuery: `TOP 6 IN ${list[0].language}`,
         }"
       />
       <div class="flex flex-row flex-wrap">

@@ -7,7 +7,7 @@
       {{ criteria.searchedQuery }}
     </div>
     <div class="mb-2 text-center" v-else>
-      TOP 6 IN {{ criteria.searchedQuery.toUpperCase() }}
+      {{ criteria.searchedQuery.toUpperCase() }}
     </div>
   </div>
 </template>
