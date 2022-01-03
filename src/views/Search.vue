@@ -29,8 +29,14 @@
         </svg>
       </button>
     </div>
+    <!-- LOCAL LOADER -->
+    <div class="flex items-center justify-center" v-if="isLoading">
+      <div
+        class="w-28 h-28 border-b-4 border-white rounded-full animate-spin"
+      ></div>
+    </div>
     <!-- SEARCH RESULTS -->
-    <div class="flex flex-col w-full" v-if="searchedQuery">
+    <div class="flex flex-col w-full" v-else-if="!isLoading && searchedQuery">
       <div>
         <station-criteria
           :criteria="{ searchedQuery, ResultSize, mode: 'search' }"
@@ -51,6 +57,7 @@
 import RadioBrowser from "@/services/RadioBrowser.js";
 import Station from "@/components/Station.vue";
 import StationCriteria from "@/components/StationCriteria.vue";
+import bus from "@/services/Stationbus";
 export default {
   name: "Search",
   components: {
@@ -59,7 +66,7 @@ export default {
   },
   data() {
     return {
-      dataLoaded: true,
+      isLoading: false,
       query: "",
       searchedQuery: "",
       stations: [],
@@ -68,6 +75,7 @@ export default {
   methods: {
     getStations() {
       this.searchedQuery = this.query.trim();
+      this.isLoading = true;
       if (this.searchedQuery) {
         RadioBrowser.getStations(this.searchedQuery).then(
           (stations) => (this.stations = stations)
@@ -76,11 +84,19 @@ export default {
       this.query = "";
     },
   },
-
   computed: {
     ResultSize: function () {
-      return Object.keys(this.stations).length.toString();
+      const size = Object.keys(this.stations).length.toString();
+      return size;
     },
+  },
+  watch: {
+    stations(newVal) {
+      if (newVal) this.isLoading = false;
+    },
+  },
+  mounted() {
+    bus.fire("isLoading", false); //global loading event
   },
 };
 </script>

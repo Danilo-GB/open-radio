@@ -35,11 +35,14 @@ export default {
       topsList: [],
     };
   },
+  watch: {
+    topsList(newVal) {
+      if (newVal.length > 0) bus.fire("isLoading", false);
+    },
+  },
   created() {
     bus.fire("isLoading", true);
-    RadioBrowser.getTopFive()
-      .then((Lists) => (this.topsList = Lists))
-      .finally(bus.fire("isLoading", false));
+    RadioBrowser.getTopFive().then((Lists) => (this.topsList = Lists));
   },
 };
 </script>
