@@ -1,7 +1,7 @@
 <template>
   <div
-    class="station w-1/2 h-52 md:h-52 md:w-1/3 text-white p-3"
-    v-if="station.favicon && station.country"
+    class="station h-52 w-full sm:w-1/2 md:h-56 md:w-1/3 text-white p-3 overflow-hidden"
+    v-if="station.url_resolved"
   >
     <div class="h-1/5 flex flex-row justify-evenly mb-2">
       <!-- COUNTRY BADGE -->
@@ -83,11 +83,9 @@
       class="h-3/5 mx-auto text-center cursor-pointer"
       @click="changeStation"
     />
-    <div class="h-1/5 pt-1 block text-center overflow-ellipsis">
-      <!-- STATION NAME -->
-      <div>
-        {{ station.name }}
-      </div>
+    <!-- STATION NAME -->
+    <div class="h-1/5 pt-1 text-center text-sm">
+      {{ station.name }}
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full overflow-y-scroll search">
+  <div class="overflow-y-scroll search">
     <!-- SEARCH BAR -->
     <div class="flex items-center justify-center h-1/2">
       <input
@@ -30,17 +30,21 @@
       </button>
     </div>
     <!-- SEARCH RESULTS -->
-    <div class="flex flex-col w-full" v-if="stations.length > 0">
-      <div class="flex flex-row w-1/2 md:w-1/3">
-        <station-criteria :criteria="searchedStation" />
+    <div class="flex flex-col w-full" v-if="searchedStation">
+      <div>
+        <!-- 
+        class="flex flex-row w-1/2 md:w-1/3" -->
+        <station-criteria :criteria="{ searchedStation, ResultSize }" />
       </div>
-      <div class="flex flex-row flex-wrap w-full">
-        <station
-          v-for="station in stations"
-          :key="station.stationuuid"
-          :station="station"
-        />
-      </div>
+      <transition name="fade">
+        <div class="flex flex-row flex-wrap w-full">
+          <station
+            v-for="station in stations"
+            :key="station.stationuuid"
+            :station="station"
+          />
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -70,6 +74,12 @@ export default {
         (stations) => (this.stations = stations)
       );
       this.query = "";
+    },
+  },
+
+  computed: {
+    ResultSize: function () {
+      return Object.keys(this.stations).length.toString();
     },
   },
 };
