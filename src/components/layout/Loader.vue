@@ -1,5 +1,5 @@
 <template>
-  <div class="loader-container">
+  <div class="fixed w-full h-5/6 top-0 md:right-0 md:w-5/6 md:h-full bg-white">
     <div class="logo">
       <svg width="200" height="120">
         <path
@@ -21,14 +21,6 @@
 </template>
 
 <style scoped>
-.loader-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 83.333%;
-  height: 100%;
-  background-color: #fdf8f5;
-}
 .logo {
   position: absolute;
   top: calc(50% - 60px);
