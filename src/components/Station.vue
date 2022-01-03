@@ -6,8 +6,8 @@
     <div class="h-1/5 flex flex-row justify-evenly mb-2">
       <!-- COUNTRY BADGE -->
       <div
-        class="hidden md:inline-block lg:border-2 rounded-full py-1 px-4"
-        v-if="station.country"
+        class="hidden md:inline-block lg:border-2 w-1/3 rounded-full py-1 px-4"
+        v-if="station.country.length < 10"
       >
         {{ station.country }}
       </div>
@@ -37,7 +37,7 @@
       <!-- ADD TO FAVORITES BADGE -->
       <div class="inline-block">
         <svg
-          class="w-6 h-6"
+          class="w-6 h-6 inline-block"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -53,9 +53,9 @@
       </div>
 
       <!-- PLAY BADGE -->
-      <div class="inline-block">
+      <div class="inline-block" @click="changeStation">
         <svg
-          class="w-6 h-6 inline-block lg:hidden"
+          class="w-6 h-6 inline-block lg:hidden cursor-pointer"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -101,7 +101,6 @@ export default {
   },
   methods: {
     changeStation() {
-      console.log("station changed");
       bus.fire("changeStation", this.station.url_resolved);
     },
   },
