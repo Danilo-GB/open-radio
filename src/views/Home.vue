@@ -1,6 +1,4 @@
-<template>
-  <div>HI RADIO</div>
-</template>
+<template></template>
 
 <script>
 export default {
