@@ -36,7 +36,6 @@ export default {
   },
 };
 </script>
-
 <style>
 .content {
   background: #2a2a2a;
