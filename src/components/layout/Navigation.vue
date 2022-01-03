@@ -136,18 +136,22 @@
   </nav>
 </template>
 <script>
+import bus from "@/services/Stationbus";
 export default {
   data() {
     return {
+      playingStation: "",
       isPlaying: false,
     };
   },
   methods: {
-    newStation() {
-      console.log("event:");
-      console.log();
+    newStation(stationUrl) {
+      if (stationUrl) this.playingStation = stationUrl;
     },
     switchStationSate() {},
+  },
+  mounted() {
+    bus.listen("changeStation", (data) => this.newStation(data));
   },
 };
 </script>

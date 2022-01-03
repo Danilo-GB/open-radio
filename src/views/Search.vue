@@ -29,7 +29,6 @@
         </svg>
       </button>
     </div>
-    <!-- SEARCH BAR -->
     <!-- SEARCH RESULTS -->
     <div class="flex flex-col w-full" v-if="stations.length > 0">
       <div class="flex flex-row w-1/2 md:w-1/3">
@@ -43,7 +42,6 @@
         />
       </div>
     </div>
-    <!-- SEARCH RESULTS -->
   </div>
 </template>
 

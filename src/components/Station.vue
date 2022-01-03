@@ -93,6 +93,7 @@
 </template>
 
 <script>
+import bus from "@/services/Stationbus";
 export default {
   props: {
     station: {
@@ -101,7 +102,10 @@ export default {
     },
   },
   methods: {
-    changeStation() {},
+    changeStation() {
+      console.log("station changed");
+      bus.fire("changeStation", this.station.url_resolved);
+    },
   },
 };
 </script>
