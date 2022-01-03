@@ -5,11 +5,11 @@
   >
     <div class="h-1/5 flex flex-row justify-evenly mb-2">
       <!-- COUNTRY BADGE -->
-      <div
-        class="hidden md:inline-block lg:border-2 w-1/3 rounded-full py-1 px-4"
-        v-if="station.country.length < 10"
-      >
-        {{ station.country }}
+      <div class="hidden md:inline-block lg:border-2 rounded-full py-1 px-4">
+        <span v-if="station.country.length < 10">
+          {{ station.country }}
+        </span>
+        <span v-else> ... </span>
       </div>
 
       <!-- VOTES BADGE -->
@@ -35,10 +35,10 @@
       </div>
 
       <!-- ADD TO FAVORITES BADGE -->
-      <div class="inline-block">
+      <div class="inline-block cursor-pointer" @click="addToFavorites">
         <svg
           class="w-6 h-6 inline-block"
-          fill="none"
+          :fill="isFav ? '#fff' : 'none'"
           stroke="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -99,10 +99,44 @@ export default {
       default: {},
     },
   },
+  data() {
+    return {
+      isFav: false,
+    };
+  },
   methods: {
     changeStation() {
       bus.fire("changeStation", this.station.url_resolved);
     },
+    addToFavorites() {
+      let favStations = [];
+      favStations = JSON.parse(localStorage.getItem("fav-stations")) || [];
+      let idx = favStations.findIndex(
+        (x) => x.stationuuid == this.station.stationuuid
+      );
+      //add new fav
+      if (!this.isFav) {
+        favStations.push(this.station);
+        this.isFav = true;
+      } else {
+        if (idx > -1) {
+          favStations.splice(idx, 1);
+          this.isFav = false;
+          idx = -1;
+        }
+      }
+
+      localStorage.setItem("fav-stations", JSON.stringify(favStations));
+    },
+  },
+  created() {
+    let favStations = [];
+    favStations = JSON.parse(localStorage.getItem("fav-stations")) || [];
+    // check if station is already in fav
+    let idx = favStations.findIndex(
+      (x) => x.stationuuid == this.station.stationuuid
+    );
+    this.isFav = idx === -1 ? false : true;
   },
 };
 </script>
