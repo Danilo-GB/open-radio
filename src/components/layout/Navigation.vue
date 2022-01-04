@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex flex-row items-center justify-start md:flex-col nav-bar">
+  <nav class="flex flex-row items-center justify-evenly md:flex-col nav-bar">
     <!-- BRAND LOGO -->
     <div class="hidden md:block md:w-4/5 lg:w-3/5 my-10">
       <svg viewBox="0 0 285 170">
@@ -10,7 +10,7 @@
         />
       </svg>
     </div>
-    <!-- HOME PAGE --->
+    <!-- HOME PAGE -->
     <div class="w-1/5 md:w-full">
       <router-link to="/">
         <div class="logo-container">
@@ -51,58 +51,9 @@
       </router-link>
     </div>
     <!-- SONG CONTROL-->
+
     <div class="w-1/5 md:w-full cursor-pointer">
-      <a @click="switchStationSate">
-        <audio :src="playingStation" autoplay></audio>
-        <div class="logo-container">
-          <svg
-            v-if="isPlaying"
-            class="w-full h-10"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke="#0f0"
-              opacity="0.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-            <path
-              stroke="#0f0"
-              opacity="0.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
-            ></path>
-          </svg>
-          <svg
-            v-else
-            class="w-full h-8 md:h-10"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke="#f00"
-              opacity="0.3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-            ></path>
-            <path
-              stroke="#f00"
-              opacity="0.3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-          </svg>
-        </div>
-      </a>
+      <r-station-control />
     </div>
     <!-- FAVORITES PAGE-->
     <div class="w-1/5 md:w-full">
@@ -123,7 +74,7 @@
         </div>
       </router-link>
     </div>
-    <!-- INFO PAGE------->
+    <!-- INFO PAGE-->
     <div class="w-1/5 md:w-full">
       <router-link to="info">
         <div class="logo-container">
@@ -145,29 +96,10 @@
   </nav>
 </template>
 <script>
-import bus from "@/services/Stationbus";
+import RStationControl from "@/components/StationControl.vue";
 export default {
-  data() {
-    return {
-      playingStation: "",
-      isPlaying: false,
-    };
-  },
-  methods: {
-    newStation(stationUrl) {
-      if (stationUrl) {
-        this.playingStation = stationUrl;
-        this.isPlaying = true;
-      }
-    },
-    switchStationSate() {
-      this.isPlaying = false;
-      this.playingStation = "";
-    },
-  },
-
-  mounted() {
-    bus.listen("changeStation", (data) => this.newStation(data));
+  components: {
+    RStationControl,
   },
 };
 </script>

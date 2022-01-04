@@ -87,7 +87,8 @@
     />
     <svg
       v-if="imageLoading"
-      class="w-20 h-3/5 mx-auto"
+      @click="changeStation"
+      class="w-20 h-3/5 mx-auto cursor-pointer"
       fill="none"
       stroke="#000"
       opacity="0.5"

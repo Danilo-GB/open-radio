@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row justify-center">
     <div
-      class="my-auto p-7 text-purple-900 rounded-lg w-1/2 bg-white opacity-90"
+      class="my-auto p-7 m-7 text-purple-900 rounded-lg w-full md:w-1/2 bg-white opacity-90"
     >
       <h1 class="text-xl md:text-4xl">
         Created with
