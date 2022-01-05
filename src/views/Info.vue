@@ -21,7 +21,7 @@
         </svg>
         by
         <a
-          href="www.linkedin.com/in/danilogarciab"
+          href="https://www.linkedin.com/in/danilogarciab"
           target="blank"
           class="underline hover:text-red-700"
           >Danilo Garcia</a

@@ -3,6 +3,7 @@ import Home from "@/views/Home.vue";
 import Search from "@/views/Search.vue";
 import Favorites from "@/views/Favorites.vue";
 import Info from "@/views/Info.vue";
+import NotFound from "@/views/NotFound.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/info",
     name: "Info",
     component: Info,
+  },
+  {
+    path: "/:pathMatch(.*)",
+    name: "NotFound",
+    component: NotFound,
   },
 ];
 
