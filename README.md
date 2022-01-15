@@ -1,5 +1,5 @@
 # Open Radio
-## _SPA created using VueJS_
+## _SPA created using VueJS V3_
 
 Live on [NETLIFY](https://open-radio.netlify.app/)!
 
