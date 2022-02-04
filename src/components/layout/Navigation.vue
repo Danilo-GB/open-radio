@@ -127,7 +127,7 @@ a.router-link-exact-active svg {
 }
 @media (min-width: 768px) {
   .logo-container {
-    padding: 2rem 0;
+    padding: 1rem 0;
     margin: 1rem 0;
   }
   a.router-link-exact-active .logo-container {
