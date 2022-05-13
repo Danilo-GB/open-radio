@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/views/Home.vue";
 import Search from "@/views/Search.vue";
 import Favorites from "@/views/Favorites.vue";
 import Info from "@/views/Info.vue";
@@ -8,11 +7,6 @@ import NotFound from "@/views/NotFound.vue";
 const routes = [
   {
     path: "/",
-    name: "Home",
-    redirect: "search",
-  },
-  {
-    path: "/search",
     name: "Search",
     component: Search,
   },
