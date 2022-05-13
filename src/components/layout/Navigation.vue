@@ -9,7 +9,7 @@
     
     <!-- SEARCH PAGE-->
     <div class="w-1/5 md:w-full">
-      <router-link to="/search">
+      <router-link to="/">
         <div class="logo-container">
           <svg
             class="w-full h-8 md:h-10"
