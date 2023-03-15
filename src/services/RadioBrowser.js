@@ -3,7 +3,7 @@ const config = {
   method: "GET",
   headers: {
     "x-rapidapi-host": "radio-browser.p.rapidapi.com",
-    "x-rapidapi-key": "2bb11848demsha4bf7d07c97be5fp158204jsna5d9b3c4ed0f",
+    "x-rapidapi-key": "Will fix it later",
   },
 };
 
